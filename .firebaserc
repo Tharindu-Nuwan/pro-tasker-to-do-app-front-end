@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "pro-tasker-todo-app-angular": {
+      "hosting": {
+        "pro-tasker": [
+          "pro-tasker-todo-app-angular"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "pro-tasker-todo-app-angular"
+  }
+}

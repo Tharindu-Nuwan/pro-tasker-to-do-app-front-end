@@ -7,7 +7,7 @@ import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
       <h1
         class="flex items-center text-4xl font-bold bg-gradient-to-r from-lime-600 to-cyan-600 bg-clip-text text-transparent">
         <span
-          class="material-symbols-outlined text-5xl font-bold bg-gradient-to-r from-lime-600 to-cyan-600 bg-clip-text text-transparent pr-2">
+          class="material-symbols-outlined text-5xl bg-gradient-to-r from-lime-600 to-cyan-600 bg-clip-text text-transparent pr-2">
             task_alt
         </span>
         <span

@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "pro-tasker",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}

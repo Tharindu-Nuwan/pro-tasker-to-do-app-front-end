@@ -122,6 +122,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "pro-tasker:build:production",
+              "serveTarget": "pro-tasker:serve:production"
+            },
+            "development": {
+              "buildTarget": "pro-tasker:build:development",
+              "serveTarget": "pro-tasker:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
