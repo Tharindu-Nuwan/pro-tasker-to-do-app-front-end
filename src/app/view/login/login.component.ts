@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {AuthService} from "../../service/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -23,7 +25,7 @@ import { Component } from '@angular/core';
             Please Sign In with your Google account to continue...
         </div>
         <div>
-          <button type="button" class="inline-flex items-center text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
+          <button (click)="onClick()" class="inline-flex items-center text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
           <span class="text-slate-200 font-bold text-2xl pr-2">G</span>
             Sign in with Google
           </button>
@@ -35,4 +37,13 @@ import { Component } from '@angular/core';
 })
 export class LoginComponent {
 
+
+  constructor(private authService: AuthService, private routerServise: Router) {
+  }
+
+  onClick() {
+    this.authService.signIn().then(user => {
+      this.routerServise.navigateByUrl('/app')
+    });
+  }
 }

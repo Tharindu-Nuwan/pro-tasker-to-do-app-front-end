@@ -1,4 +1,7 @@
 import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
+import {AuthService} from "../../service/auth.service";
+import {signOut} from "@angular/fire/auth";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -22,7 +25,7 @@ import {Component, ElementRef, HostListener, ViewChild} from '@angular/core';
              class="hidden flex-col gap-2 shadow shadow-gray-700 font-normal text-center absolute border top-full mt-1 right-0 p-2 border-gray-600 rounded bg-[#1E1F22] px-3">
           <div>someone&#64;ijse.lk</div>
           <div class="whitespace-nowrap px-3">Hi, Tharindu Nuwan Madhushanka!</div>
-          <div class="group flex items-center justify-center bg-slate-500 hover:bg-slate-700 cursor-pointer p-2 rounded-xl">
+          <div (click)="onClick()" class="group flex items-center justify-center bg-slate-500 hover:bg-slate-700 cursor-pointer p-2 rounded-xl">
               <span class="material-symbols-outlined mr-2 group-hover:text-lime-500">
                 logout
             </span>
@@ -38,6 +41,9 @@ export class HeaderComponent {
   @ViewChild('userMenu')
   userMenuElm!: ElementRef<HTMLDivElement>
 
+  constructor(public authService: AuthService, public routerService: Router) {
+  }
+
   @HostListener('document:click')
   onDocumentClick() {
     const userMenu = this.userMenuElm.nativeElement;
@@ -47,10 +53,19 @@ export class HeaderComponent {
     }
   }
 
+
+
   onAvatarClick($event: MouseEvent, avatar: HTMLDivElement) {
       $event.stopPropagation();
       if ($event.target != avatar) return;
       this.userMenuElm.nativeElement.classList.toggle('flex');
       this.userMenuElm.nativeElement.classList.toggle('hidden');
   }
+
+  onClick() {
+    this.authService.signOut().then(value => {
+      this.routerService.navigateByUrl('/login');
+    });
+  }
+
 }
