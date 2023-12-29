@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss',
   template: `
     <app-header />
+    <app-form />
   `
 })
 export class AppComponent {
