@@ -15,10 +15,11 @@ import {authGuard} from "./guard/auth.guard";
 import { LoaderComponent } from './view/loader/loader.component';
 import {AuthService} from "./service/auth.service";
 import {TaskService} from "./service/task.service";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {ToastrModule} from "ngx-toastr";
+import {errorInterceptor} from "./interceptor/error.interceptor";
 
 
 const routes: Routes = [
@@ -63,9 +64,15 @@ const routes: Routes = [
     provideAuth(() => getAuth()),
     FormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot({
+      positionClass: 'toast-bottom-center',
+      preventDuplicates: true,
+      progressBar: true,
+      timeOut: 5000
+    })
   ],
-  providers: [AuthService, TaskService],
+  providers: [AuthService, TaskService,
+    provideHttpClient(withInterceptors([errorInterceptor]))],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,7 +6,7 @@ import {TaskService} from "../../service/task.service";
   selector: 'app-task',
   template: `
     <div
-      class="group flex flex-row items-center justify-between gap-2 hover:bg-gradient-to-r from-indigo-700 to-cyan-600 p-2.5 rounded-lg">
+      class="animate__animated animate__bounceInUp animate__faster group flex flex-row items-center justify-between gap-2 hover:bg-gradient-to-r from-indigo-700 to-cyan-600 p-2.5 rounded-lg">
       <div class="flex flex-row items-center gap-2 ">
         <input (change)="onChange()" class="accent-amber-500 w-6 h-6 ml-2 bg-slate-700 rounded-md text-emerald-500 peer"
                type="checkbox" name="" id="chk-{{task.id}}"
