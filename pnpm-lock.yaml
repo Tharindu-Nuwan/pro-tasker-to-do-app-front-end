@@ -38,6 +38,9 @@ dependencies:
   g:
     specifier: ^2.0.1
     version: 2.0.1
+  ngx-toastr:
+    specifier: ^18.0.0
+    version: 18.0.0(@angular/common@17.0.8)(@angular/core@17.0.8)(@angular/platform-browser@17.0.8)
   rxjs:
     specifier: ~7.8.0
     version: 7.8.1
@@ -7388,6 +7391,19 @@ packages:
   /netmask@2.0.2:
     resolution: {integrity: sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==}
     engines: {node: '>= 0.4.0'}
+    dev: false
+
+  /ngx-toastr@18.0.0(@angular/common@17.0.8)(@angular/core@17.0.8)(@angular/platform-browser@17.0.8):
+    resolution: {integrity: sha512-jZ3rOG6kygl8ittY8OltIMSo47P1VStuS01igm3MZXK6InJwHVvxU7wDHI/HGMlXSyNvWncyOuFHnnMEAifsew==}
+    peerDependencies:
+      '@angular/common': '>=16.0.0-0'
+      '@angular/core': '>=16.0.0-0'
+      '@angular/platform-browser': '>=16.0.0-0'
+    dependencies:
+      '@angular/common': 17.0.8(@angular/core@17.0.8)(rxjs@7.8.1)
+      '@angular/core': 17.0.8(rxjs@7.8.1)(zone.js@0.14.2)
+      '@angular/platform-browser': 17.0.8(@angular/animations@17.0.8)(@angular/common@17.0.8)(@angular/core@17.0.8)
+      tslib: 2.6.2
     dev: false
 
   /nice-napi@1.0.2:

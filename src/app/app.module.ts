@@ -16,6 +16,9 @@ import { LoaderComponent } from './view/loader/loader.component';
 import {AuthService} from "./service/auth.service";
 import {TaskService} from "./service/task.service";
 import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {ToastrModule} from "ngx-toastr";
 
 
 const routes: Routes = [
@@ -49,8 +52,18 @@ const routes: Routes = [
     HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(routes),
-    provideFirebaseApp(() => initializeApp({"projectId":"pro-tasker-todo-app-angular","appId":"1:646987060991:web:085669e051f0d75fff1eca","storageBucket":"pro-tasker-todo-app-angular.appspot.com","apiKey":"AIzaSyB_yR0Rq7mfVeybHZW2pRP-g_7dfjAWMQo","authDomain":"pro-tasker-todo-app-angular.firebaseapp.com","messagingSenderId":"646987060991"})),
-    provideAuth(() => getAuth())
+    provideFirebaseApp(() => initializeApp({
+      "projectId": "pro-tasker-todo-app-angular",
+      "appId": "1:646987060991:web:085669e051f0d75fff1eca",
+      "storageBucket": "pro-tasker-todo-app-angular.appspot.com",
+      "apiKey": "AIzaSyB_yR0Rq7mfVeybHZW2pRP-g_7dfjAWMQo",
+      "authDomain": "pro-tasker-todo-app-angular.firebaseapp.com",
+      "messagingSenderId": "646987060991"
+    })),
+    provideAuth(() => getAuth()),
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [AuthService, TaskService],
   bootstrap: [AppComponent]
