@@ -38,12 +38,10 @@ import {Router} from "@angular/router";
 export class LoginComponent {
 
 
-  constructor(private authService: AuthService, private routerServise: Router) {
+  constructor(private authService: AuthService) {
   }
 
   onClick() {
-    this.authService.signIn().then(user => {
-      this.routerServise.navigateByUrl('/app')
-    });
+    this.authService.signIn();
   }
 }

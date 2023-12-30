@@ -19,13 +19,14 @@ import {Router} from "@angular/router";
           class="text-5xl font-bold bg-gradient-to-b from-amber-600 to-violet-600 bg-clip-text text-transparent">T</span>asker
       </h1>
       <div #avatar (click)="onAvatarClick($event, avatar)"
-        class="relative w-12 border bg-sky-700 border-gray-600 cursor-pointer rounded-full hover:shadow-lg hover:shadow-cyan-600 text-white font-bold
-                    flex items-center justify-center text-xl">U
+           class="bg-contain relative w-12 border bg-sky-700 border-gray-600 cursor-pointer rounded-full hover:shadow-lg hover:shadow-cyan-600 text-white font-bold
+                    flex items-center justify-center text-xl" [style.background-image]="userImage">
         <div #userMenu
              class="hidden flex-col gap-2 shadow shadow-gray-700 font-normal text-center absolute border top-full mt-1 right-0 p-2 border-gray-600 rounded bg-[#1E1F22] px-3">
-          <div>someone&#64;ijse.lk</div>
-          <div class="whitespace-nowrap px-3">Hi, Tharindu Nuwan Madhushanka!</div>
-          <div (click)="onClick()" class="group flex items-center justify-center bg-slate-500 hover:bg-slate-700 cursor-pointer p-2 rounded-xl">
+          <div>{{ authService.getPrinciple()?.email }}</div>
+          <div class="whitespace-nowrap px-3">Hi, {{ authService.getPrinciple()?.displayName }}!</div>
+          <div (click)="onClick()"
+               class="group flex items-center justify-center bg-slate-500 hover:bg-slate-700 cursor-pointer p-2 rounded-xl">
               <span class="material-symbols-outlined mr-2 group-hover:text-lime-500">
                 logout
             </span>
@@ -40,8 +41,10 @@ import {Router} from "@angular/router";
 export class HeaderComponent {
   @ViewChild('userMenu')
   userMenuElm!: ElementRef<HTMLDivElement>
+  userImage: string;
 
-  constructor(public authService: AuthService, public routerService: Router) {
+  constructor(public authService: AuthService) {
+    this.userImage = `url(${authService.getPrinciple()!?.photoURL!})`
   }
 
   @HostListener('document:click')
@@ -63,9 +66,7 @@ export class HeaderComponent {
   }
 
   onClick() {
-    this.authService.signOut().then(value => {
-      this.routerService.navigateByUrl('/login');
-    });
+    this.authService.signOut();
   }
 
 }

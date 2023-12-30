@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {TaskDto} from "../../dto/task.dto";
 
 @Component({
   selector: 'app-task',
@@ -6,8 +7,11 @@ import { Component } from '@angular/core';
     <div class="group flex flex-row items-center justify-between gap-2 hover:bg-gradient-to-r from-indigo-700 to-cyan-600 p-2.5 rounded-lg">
       <div class="flex flex-row items-center gap-2 ">
         <input class="accent-amber-500 w-6 h-6 ml-2 bg-slate-700 rounded-md text-emerald-500 peer"
-               type="checkbox" name="" id="chk">
-        <label class="peer-checked:line-through peer-checked:text-gray-500 text-slate-200 text-2xl cursor-pointer" for="chk">Task 1</label>
+               type="checkbox" name="" id="chk-{{task.id}}">
+        <label class="peer-checked:line-through peer-checked:text-gray-500 text-slate-200 text-2xl cursor-pointer"
+               for="chk-{{task.id}}">
+          {{ task.description }}
+        </label>
       </div>
       <div title="Delete" class="mr-2 hidden group-hover:block font-4xl">
         <span class="material-symbols-outlined text-amber-400 hover:text-red-500 hover:cursor-pointer">
@@ -19,5 +23,6 @@ import { Component } from '@angular/core';
   styleUrl: './task.component.scss'
 })
 export class TaskComponent {
-
+  @Input()
+  task!: TaskDto;
 }

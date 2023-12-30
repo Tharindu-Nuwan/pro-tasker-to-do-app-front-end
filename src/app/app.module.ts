@@ -13,6 +13,9 @@ import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
 import {authGuard} from "./guard/auth.guard";
 import { LoaderComponent } from './view/loader/loader.component';
+import {AuthService} from "./service/auth.service";
+import {TaskService} from "./service/task.service";
+import {HttpClientModule} from "@angular/common/http";
 
 
 const routes: Routes = [
@@ -43,12 +46,13 @@ const routes: Routes = [
     LoaderComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(routes),
     provideFirebaseApp(() => initializeApp({"projectId":"pro-tasker-todo-app-angular","appId":"1:646987060991:web:085669e051f0d75fff1eca","storageBucket":"pro-tasker-todo-app-angular.appspot.com","apiKey":"AIzaSyB_yR0Rq7mfVeybHZW2pRP-g_7dfjAWMQo","authDomain":"pro-tasker-todo-app-angular.firebaseapp.com","messagingSenderId":"646987060991"})),
     provideAuth(() => getAuth())
   ],
-  providers: [],
+  providers: [AuthService, TaskService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
