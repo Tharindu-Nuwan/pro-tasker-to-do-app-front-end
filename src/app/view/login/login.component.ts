@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {AuthService} from "../../service/auth.service";
 import {Router} from "@angular/router";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-login',
@@ -38,7 +39,8 @@ import {Router} from "@angular/router";
 export class LoginComponent {
 
 
-  constructor(private authService: AuthService) {
+  constructor(private authService: AuthService, private title: Title) {
+    title.setTitle("Login: ProTasker")
   }
 
   onClick() {

@@ -22,7 +22,7 @@ import {Router} from "@angular/router";
            class="bg-contain relative w-12 border bg-sky-700 border-gray-600 cursor-pointer rounded-full hover:shadow-lg hover:shadow-cyan-600 text-white font-bold
                     flex items-center justify-center text-xl" [style.background-image]="userImage">
         <div #userMenu
-             class="hidden flex-col gap-2 shadow shadow-gray-700 font-normal text-center absolute border top-full mt-1 right-0 p-2 border-gray-600 rounded bg-[#1E1F22] px-3">
+             class="z-50 hidden flex-col gap-2 shadow shadow-gray-700 font-normal text-center absolute border top-full mt-1 right-0 p-2 border-gray-600 rounded bg-[#1E1F22] px-3">
           <div>{{ authService.getPrinciple()?.email }}</div>
           <div class="whitespace-nowrap px-3">Hi, {{ authService.getPrinciple()?.displayName }}!</div>
           <div (click)="onClick()"

@@ -25,7 +25,6 @@ import {animate, query, style, transition, trigger} from "@angular/animations";
   animations: [
     trigger('task', [
       transition(":leave", [
-        query('div>div:last-child', style({display:'none'})),
         animate(250, style({transform:'translateX(-100%)'}))
       ])
     ])
